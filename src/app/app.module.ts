@@ -6,6 +6,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CustomEventTitleFormatterProvider } from '../providers/custom-event-title-formatter/custom-event-title-formatter';
+import { CustomDataFormatterProvider } from '../providers/custom-data-formatter/custom-data-formatter';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CalendarModule, CalendarDateFormatter, CalendarEventTitleFormatter } from 'angular-calendar';
+import  { CalendarWeekHoursViewModule } from 'angular-calendar-week-hours-view';
+
+import locales from '@angular/common/locales/de';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(locales);
 
 @NgModule({
   declarations: [
@@ -14,7 +25,10 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CalendarModule.forRoot(),
+    CalendarWeekHoursViewModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +38,9 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CustomEventTitleFormatterProvider,
+    CustomDataFormatterProvider
   ]
 })
 export class AppModule {}
