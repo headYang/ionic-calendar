@@ -19,7 +19,7 @@ import { CalendarEvent, CalendarEventTimesChangedEvent } from 'angular-calendar'
 })
 export class HomePage {
   viewDate: Date = new Date();
-  view = 'day';
+  view = 'week';
   locale = 'en'; //'fr' ,'en'
   isDragging = false;
 

@@ -1,17 +1,22 @@
-import { HttpClient } from '@angular/common/http';
+import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { getISOWeek } from 'date-fns';
 
-/*
-  Generated class for the CustomDataFormatterProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
-export class CustomDataFormatterProvider {
-
-  constructor(public http: HttpClient) {
-    console.log('Hello CustomDataFormatterProvider Provider');
+export class CustomDateFormatterProvider extends CalendarDateFormatter {
+  public dayViewHour({ date, locale}: DateFormatterParams): string {
+    return new DatePipe(locale).transform(date, 'HH:mm', locale);
   }
-
+  public weekViewTitle({date, locale}: DateFormatterParams): string {
+    const year: string = new DatePipe(locale).transform(date, 'y', locale);
+    const weekNumber: number = getISOWeek(date);
+    return `Woche ${weekNumber} in ${year}`;
+  }
+  public weekViewColumnHeader({date, locale}: DateFormatterParams): string {
+    return new DatePipe(locale).transform(date, 'E', locale);
+  }
+  public weekViewColumnSubHeader({date, locale}: DateFormatterParams): string {
+    return new DatePipe(locale).transform(date, 'HH/dd', locale);
+  }
 }
