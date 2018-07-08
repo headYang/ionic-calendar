@@ -24,7 +24,8 @@ module.exports = {
         dest: '{{BUILD}}'
     },
     copyWeekHoursCss: {
-      src: ['./node_modules/angular-calendar-week-hours-view/angular-calendar-week-hours-view.scss'],
+      src: ['./node_modules/angular-calendar-week-hours-view/angular-calendar-week-hours-view.scss'
+      ],
       dest: '{{BUILD}}'
     },
       

@@ -25,10 +25,11 @@ registerLocaleData(locales);
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(MyApp),
     CalendarModule.forRoot(),
     CalendarWeekHoursViewModule,
-    BrowserAnimationsModule
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [

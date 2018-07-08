@@ -11,19 +11,33 @@
     <ion-col col-12 col-md-3>
       <ion-row>
         <ion-col col-3>
-          <button ion-button full clear icon-only mwCalendarPreviousView [view] = "view">
+          <button ion-button full clear icon-only mwlCalendarPreviousView [view] = "view" [(viewDate)]= "viewDate">
             <ion-icon name = "arrow-back"></ion-icon>
           </button>
         </ion-col>
-        <!-- <ion-col col-6>
-          <button ion-button full clear mwCalendarToday [(viewDate)]= "viewDate"></button>
+        <ion-col col-6>
+          <button ion-button full clear mwlCalendarToday [(viewDate)]= "viewDate">Today</button>
         </ion-col>
         <ion-col col-3>
-          <button ion-button full clear icon-only mwCalendarNextView [view] = "view" [(viewDate)]= "viewDate">
+          <button ion-button full clear icon-only mwlCalendarNextView [view] = "view" [(viewDate)]= "viewDate">
               <ion-icon name = "arrow-forward"></ion-icon>
           </button>
-        </ion-col> -->
+        </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
+  <iq-calendar-week-hours-view
+    [viewDate] = "viewDate"
+    [events] = "events"
+    [hourSegments] = "2"
+    [dayStartHour] = "6"
+    [dayEndHour] = "20"
+    [refresh] = "refresh"
+    [locale] = "locale"
+    [weekStartsOn] = "1"
+    (eventClicked) = "handleEvent($event.event)"
+    (hourSegmentClicked) = "hourSegmentClicked($event)"
+    (eventTimesChanged) ="eventTimesChanged($event)"
+  >
+  </iq-calendar-week-hours-view>
 </ion-content>
